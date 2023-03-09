@@ -1,2 +1,4 @@
+github.com/stokito/go-http-server-basic-auth v1.3.2 h1:Qs7nitNyavxB+WWDhhtLWtEObKhE7fTVfVkFLvgxG7Q=
+github.com/stokito/go-http-server-basic-auth v1.3.2/go.mod h1:5lixGrTVMVOPuz2f+8pszovgOhl2wU6d0ucV3zmU518=
 golang.org/x/net v0.8.0 h1:Zrh2ngAOFYneWTAIAPethzeaQLuHwhuBkuV6ZiRnUaQ=
 golang.org/x/net v0.8.0/go.mod h1:QVkue5JL9kW//ek3r6jTKnTFis1tRmNAW2P1shuFdJc=

@@ -1,10 +1,17 @@
 package main
 
 import (
+	"github.com/stokito/go-http-server-basic-auth"
 	"golang.org/x/net/webdav"
 	"log"
 	"net/http"
 )
+
+var credentials = map[string]string{
+	"admin": "pass",
+	"alice": "pass",
+	"bob":   "pass",
+}
 
 func main() {
 	dav := &webdav.Handler{
@@ -12,7 +19,17 @@ func main() {
 		LockSystem: webdav.NewMemLS(),
 		Logger:     davLog,
 	}
-	http.ListenAndServe(":8080", dav)
+	authHandler := basicauth.NewAuthHandlerWrapper(
+		dav,
+		credentials,
+		"WebDAV",
+		[]string{"/robots.txt", "/favicon.ico"},
+	)
+	recoverHandler := &basicauth.RecoveryHandlerWrapper{
+		Handler:  authHandler,
+		ErrorLog: log.Printf,
+	}
+	http.ListenAndServe(":8080", recoverHandler)
 }
 
 func davLog(r *http.Request, err error) {
