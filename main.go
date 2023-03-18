@@ -19,5 +19,7 @@ func main() {
 			}
 		},
 	}
-	http.ListenAndServe(":8090", dav)
+	port := ":8090"
+	println("Started on ", port)
+	http.ListenAndServe(port, dav)
 }
